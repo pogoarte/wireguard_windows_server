@@ -28,7 +28,7 @@ cls
    echo All configuration files and keys will be generated on C:\Program Files\WirewGuard\Config and C:\Program Files\WirewGuard\Key.
    echo. 
    echo It will ask for two things, the DNS or IP and the UDP PORT you want to use for the server, everything else it does automatically.
-   echo Remember to forward the UDP PORT on your router.
+   echo If your server is behind a FIREWALL or NAT, make sure to open or forward UDP port.
    echo I also recommend rebooting after running the script to see if the WireGuard service loads regularly at startup, etc...
    echo.
    echo Before running the script, you must have Hyper-V or WSL installed in order to use the New-NetNat cmdlet to create the new NAT for WireGuard.
