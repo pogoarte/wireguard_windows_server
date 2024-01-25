@@ -93,7 +93,7 @@ echo [Peer] >> C:\Programmi\WireGuard\Config\wg_client.conf
 echo PublicKey = %WG_SERVER.PUB% >> C:\Programmi\WireGuard\Config\wg_client.conf
 echo PresharedKey = %WG_CLIENT.PSK% >> C:\Programmi\WireGuard\Config\wg_client.conf
 echo Endpoint = %WG_SERVER_IP_DNS%:%WG_SERVER_UDP_PORT% >> C:\Programmi\WireGuard\Config\wg_client.conf
-echo AllowedIPs = 0.0.0.0/1,128.0.0.0/1 >> C:\Programmi\WireGuard\Config\wg_client.conf
+echo AllowedIPs = 0.0.0.0/0 >> C:\Programmi\WireGuard\Config\wg_client.conf
 echo PersistentKeepalive = 25 >> C:\Programmi\WireGuard\Config\wg_client.conf
 
 cls
