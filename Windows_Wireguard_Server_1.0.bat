@@ -59,6 +59,7 @@ mkdir C:\Programmi\WireGuard\Config
 tar -xf QREncode-4.1.1_Win32.zip 
 copy \QREncode-4.1.1_Win32\QREncode.exe C:\Programmi\WireGuard 
 delete WireGuard-amd64-0.5.3.msi
+delete QREncode-4.1.1_Win32.zip
 rmdir /S /Q QREncode-4.1.1_Win32
 
 cls 
