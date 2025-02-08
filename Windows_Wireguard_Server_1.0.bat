@@ -111,6 +111,6 @@ powershell -command "Set-NetConnectionProfile -InterfaceAlias 'wg_server' -Netwo
 
 cls 
 C:\Programmi\WireGuard\QREncode -r C:\Programmi\WireGuard\Config\wg_client.conf -o C:\Programmi\WireGuard\Config\wg_client.png -s 6 
-C:\Programmi\WireGuard\Config\wg_client.png 
+rundll32 "C:\Program Files\Windows Photo Viewer\photoviewer.dll",ImageView_Fullscreen C:\Programmi\WireGuard\Config\wg_client.png
 
 EXIT 0 
