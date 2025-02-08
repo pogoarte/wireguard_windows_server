@@ -44,14 +44,10 @@ cls
 :CECK 
 powershell -Command "Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All | Where-Object { $_.State -eq 'Enabled' }" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo Hyper-V not installed, quit script.
-    pause
     exit /b 1
 )
 powershell -Command "Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux | Where-Object { $_.State -eq 'Enabled' }" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo WSL not installed, quit script.
-    pause
     exit /b 1
 )
 SET /P RUN=Do you want run it? (n EXIT - y INSTALL): 
