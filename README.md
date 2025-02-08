@@ -1,3 +1,7 @@
+This script must be run as administrator to work!  
+
+It only works on 64 Bit Windows 10-11 Pro or later, it cannot be used on 64 Bit Windows 10-11 Home.
+
 It install WireGuard and configure it as a server by enabling SERVICE, FORWARDING, NAT and create the client configuration.
 All configuration files and keys will be generated on C:\Program Files\WirewGuard\Config and C:\Program Files\WirewGuard\Key.
 
