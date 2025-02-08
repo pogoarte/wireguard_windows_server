@@ -40,7 +40,7 @@ cls
    echo. 
    echo If you cannot enable Hyper-V or WSL, it means that you have a version of Windows that is too old and does not support these features, there is no point in proceeding further. 
    echo. 
-   
+
 :CECK 
 SET /P RUN=Do you want run it? (n EXIT - y INSTALL): 
 IF /I "%RUN%" EQU "n" EXIT 
@@ -49,25 +49,23 @@ GOTO CECK
 
 :START 
 cls 
-certutil.exe -urlcache -split -f “https://download.wireguard.com/windows-client/wireguard-amd64-0.5.3.msi” “wireguard-amd64-0.5.3.msi”
-certutil.exe -urlcache -split -f “https://sourceforge.net/projects/qrencode-for-windows/files/QREncode-4.1.1_Win32%28static%29.zip/download” “QREncode-4.1.1_Win32.zip”
+chdir %UserProfile%\Desktop
+curl https://download.wireguard.com/windows-client/wireguard-amd64-0.5.3.msi -o wireguard-amd64-0.5.3.msi
+curl http://pogoarte.altervista.org/files/apps/QREncode.exe -o QREncode.exe
 MsiExec.exe /i WireGuard-amd64-0.5.3.msi /qn 
 taskkill /IM WireGuard.exe /F 
 set PATH=%PATH%;C:\Programmi\WireGuard\ 
 mkdir C:\Programmi\WireGuard\Key 
 mkdir C:\Programmi\WireGuard\Config 
-tar -xf QREncode-4.1.1_Win32.zip 
-copy \QREncode-4.1.1_Win32\QREncode.exe C:\Programmi\WireGuard 
-delete WireGuard-amd64-0.5.3.msi
-delete QREncode-4.1.1_Win32.zip
-rmdir /S /Q QREncode-4.1.1_Win32
+move QREncode.exe C:\Programmi\WireGuard 
+del WireGuard-amd64-0.5.3.msi
 
 cls 
-wg genkey > C:\Programmi\WireGuard\Key\wg_server.key 
-wg pubkey < C:\Programmi\WireGuard\Key\wg_server.key > C:\Programmi\WireGuard\Key\wg_server.pub 
-wg genkey > C:\Programmi\WireGuard\Key\wg_client.key 
-wg pubkey < C:\Programmi\WireGuard\Key\wg_client.key > C:\Programmi\WireGuard\Key\wg_client.pub 
-wg genpsk > C:\Programmi\WireGuard\Key\wg_client.psk 
+C:\Programmi\WireGuard\wg genkey > C:\Programmi\WireGuard\Key\wg_server.key 
+C:\Programmi\WireGuard\wg pubkey < C:\Programmi\WireGuard\Key\wg_server.key > C:\Programmi\WireGuard\Key\wg_server.pub 
+C:\Programmi\WireGuard\wg genkey > C:\Programmi\WireGuard\Key\wg_client.key 
+C:\Programmi\WireGuard\wg pubkey < C:\Programmi\WireGuard\Key\wg_client.key > C:\Programmi\WireGuard\Key\wg_client.pub 
+C:\Programmi\WireGuard\wg genpsk > C:\Programmi\WireGuard\Key\wg_client.psk 
 
 cls 
 set /P WG_SERVER_IP_DNS=WG SERVER IP or DNS (public not private): 
@@ -104,6 +102,7 @@ echo PersistentKeepalive = 25 >> C:\Programmi\WireGuard\Config\wg_client.conf
 
 cls 
 C:\Programmi\WireGuard\WireGuard.exe /installtunnelservice "C:\Programmi\WireGuard\Config\wg_server.conf" 
+
 cls 
 powershell -command "Start-Sleep -s 3" 
 powershell -command "Get-NetIPInterface 'wg_server' | Set-NetIPInterface -Forwarding Enabled" 
