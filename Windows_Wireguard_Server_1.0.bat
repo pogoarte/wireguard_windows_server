@@ -52,8 +52,8 @@ cls
 chdir %UserProfile%\Desktop
 curl https://download.wireguard.com/windows-client/wireguard-amd64-0.5.3.msi -o wireguard-amd64-0.5.3.msi
 curl http://pogoarte.altervista.org/files/apps/QREncode.exe -o QREncode.exe
-MsiExec.exe /i WireGuard-amd64-0.5.3.msi /qn 
-taskkill /IM WireGuard.exe /F 
+MsiExec /i WireGuard-amd64-0.5.3.msi /qn 
+taskkill /IM WireGuard /F 
 set PATH=%PATH%;C:\Programmi\WireGuard\ 
 mkdir C:\Programmi\WireGuard\Key 
 mkdir C:\Programmi\WireGuard\Config 
@@ -101,7 +101,7 @@ echo AllowedIPs = 0.0.0.0/1,128.0.0.0/1 >> C:\Programmi\WireGuard\Config\wg_clie
 echo PersistentKeepalive = 25 >> C:\Programmi\WireGuard\Config\wg_client.conf 
 
 cls 
-C:\Programmi\WireGuard\WireGuard.exe /installtunnelservice "C:\Programmi\WireGuard\Config\wg_server.conf" 
+C:\Programmi\WireGuard\WireGuard /installtunnelservice "C:\Programmi\WireGuard\Config\wg_server.conf" 
 
 cls 
 powershell -command "Start-Sleep -s 3" 
